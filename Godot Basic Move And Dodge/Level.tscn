@@ -12,7 +12,7 @@ extents = Vector3( 1, 0.985944, 1 )
 extents = Vector3( 30.0087, 1, 29.9252 )
 
 [sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 0.380392, 0.835294, 0.537255, 1 )
+albedo_color = Color( 0.0509804, 0.917647, 0.34902, 1 )
 
 [sub_resource type="CubeMesh" id=5]
 material = SubResource( 4 )
@@ -74,9 +74,8 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.930328, 0 )
 script = ExtResource( 2 )
 
-[node name="Camera" type="Camera" parent="Steve-ball"]
-transform = Transform( 0.999368, 0.020882, 0.0287552, -0.0314996, 0.895119, 0.444714, -0.0164528, -0.445338, 0.895211, 1.25616, 4.56034, 7.03332 )
-fov = 88.0073
+[node name="cameraFollow" type="Spatial" parent="Steve-ball"]
+transform = Transform( 0.999994, -0.00351746, -0.00125692, 0.00351746, 0.773531, 0.633749, -0.00125692, -0.63375, 0.773538, 0.10445, 11.0072, 18.819 )
 
 [node name="box-redged-body4" type="RigidBody" parent="."]
 transform = Transform( 0.999969, -0.00553443, -0.00596745, 0.00553444, -0.0752058, 0.997153, -0.00596746, -0.997155, -0.0751719, -9.75116, 1.15069, -3.84709 )
@@ -101,3 +100,13 @@ shape = SubResource( 6 )
 transform = Transform( 1, 0.000542274, -2.65532e-05, -0.000542274, 0.995216, -0.0977028, -2.65561e-05, 0.0977032, 0.995216, 0, 0, 0 )
 mesh = SubResource( 7 )
 material/0 = null
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
+transform = Transform( 0.999999, -0.00124813, -0.000142166, 0.00124813, 0.974386, 0.22488, -0.000142155, -0.22488, 0.974386, 0.0673289, 5.9663, 12.1308 )
+target = NodePath("../Steve-ball/cameraFollow")
+enabled = true
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.999969, -0.00554987, -0.00560566, 0.00554987, -0.010018, 0.999934, -0.00560566, -0.999934, -0.00998687, 0.0499497, 25.582, 0.802729 )
+shadow_enabled = true
+shadow_color = Color( 0.0666667, 0.0313726, 0.0313726, 1 )
